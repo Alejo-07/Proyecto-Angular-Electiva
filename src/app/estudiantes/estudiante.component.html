@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <h1>Estudiante</h1>
+  <form #forma="ngForm">
+    <label>Codigo: </label>
+    <input type="text" name="codigo" [(ngModel)]="estudiante.Codigo" [maxLength]="10" required>
+    <br>
+    <label>Nombre: </label>
+    <input type="text" name="nombre" [(ngModel)]="estudiante.Nombre" [maxLength]="200" required>
+    <br>
+    <label>Semestre: </label>
+    <input type="number" name="semestre" [(ngModel)]="estudiante.Semestre" min="1" max="9" required>
+    <br>
+    <label>Edad: </label>
+    <input type="number" name="edad" [(ngModel)]="estudiante.Edad">
+    <br>
+    <label>Email: </label>
+    <input type="text" name="email" [(ngModel)]="estudiante.Email" pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$"
+      [maxLength]="100">
+    <br>
+    <input type="button" value="Insertar" (click)="guardar()" [disabled]="forma.invalid">
+  </form>
+
+  <table border="1">
+    <tr>
+      <th>-Codigo</th>
+      <th>-Nombre</th>
+      <th>-Semestre</th>
+      <th>-Edad</th>
+      <th>-E-mail</th>
+    </tr>
+    <tr *ngFor="let item of estudiantes">
+      <td>{{item.Codigo}}</td>
+      <td>{{item.Nombre}}</td>
+      <td>{{item.Semestre}}</td>
+      <td>{{item.Edad}}</td>
+      <td>{{item.Email}}</td>
+    </tr>
+  </table>
+</body>
+
+</html>

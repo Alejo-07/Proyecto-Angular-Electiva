@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Profesor</title>
+</head>
+
+<body>
+     <h1>Profesor</h1>
+     <form #forma="ngForm">
+          <label>Codigo: </label>
+          <input type="text" name="codigo" [(ngModel)]="profesor.Codigo" [maxLength]="10" required>
+          <br>
+          <label>Nombre: </label>
+          <input type="text" name="nombre" [(ngModel)]="profesor.Nombre" [maxLength]="200" required>
+          <br>
+          <label>Semestre: </label>
+          <input type="number" name="semestre" [(ngModel)]="profesor.Semestre" min="1" max="9" required>
+          <br>
+          <label>Edad: </label>
+          <input type="number" name="edad" [(ngModel)]="profesor.Edad">
+          <br>
+          <label>Facultad: </label>
+          <input type="number" name="facultad" [(ngModel)]="profesor.Facultades" [maxLength]="10">
+          <br>
+          <input type="button" value="Insertar" (click)="save()" [disabled]="forma.invalid">
+     </form>
+
+     <table border="1">
+          <tr>
+               <th>-Codigo</th>
+               <th>-Nombre</th>
+               <th>-Semestre</th>
+               <th>-Edad</th>
+               <th>-Facultad</th>
+          </tr>
+          <tr *ngFor="let item of profesores">
+               <td>{{item.Codigo}}</td>
+               <td>{{item.Nombre}}</td>
+               <td>{{item.Semestre}}</td>
+               <td>{{item.Edad}}</td>
+               <td>{{item.Facultades}}</td>
+          </tr>
+     </table>
+</body>
+
+</html>
